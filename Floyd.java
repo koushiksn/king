@@ -1,0 +1,66 @@
+package removefriends;
+import java.util.*;
+
+
+
+public class Floyd {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        int stack[]=new int[n];
+        int expected=1;
+        int count=0,top=-1;
+for(int i=0;i<n;i++)
+{
+    while(top!=-1 && stack[top]==expected)
+    {
+
+        top--;
+        count++;
+        expected++;
+
+    }
+     if(arr[i]==expected)
+    {
+       count++;
+       expected++;
+
+    }
+    else
+    {
+        top=top+1;
+        stack[top]=arr[i];
+    }
+}
+
+if(top!=-1)
+{
+    while(top!=-1)
+    {
+        if(stack[top]!=expected)
+        {
+
+            break;
+        }
+        else
+        {
+            top=top-1;
+            count++;
+            expected++;
+        }
+    }
+
+}
+
+if(count==n)
+System.out.println("Happy");
+else
+System.out.println("Sad");
+}
+}
