@@ -1,1 +1,1 @@
-# king
+hacker earth solution
